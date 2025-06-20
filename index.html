@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apocalypse Survival Kit</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="modal" id="warningModal">
+        <div class="modal-content terminal">
+            <div class="terminal-header">EMERGENCY BROADCAST SYSTEM</div>
+            <div class="terminal-text">
+                !!! WARNING !!!<br>
+                NUCLEAR STRIKE DETECTED<br>
+                MULTIPLE WARHEADS INCOMING<br>
+                ESTIMATED TIME TO IMPACT: 00:15:00<br>
+                PREPARE FOR IMMEDIATE EVACUATION<br>
+                !!! WARNING !!!
+            </div>
+            <button id="startButton" class="terminal-button">START</button>
+        </div>
+    </div>
+
+    <div class="modal" id="resultModal" style="display:none;">
+        <div class="modal-content" id="resultContent">
+            <div class="result-text" id="resultText"></div>
+            <button id="restartGame" class="terminal-button">RESTART</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="game-layout">
+            <!-- Main Game Section -->
+            <div class="main-game-section">
+                <div class="unified-container">
+                    <a href="https://x.com/home" target="_blank" class="twitter-logo">
+                        <img src="img/twitter.png" alt="Twitter">
+                    </a>
+                    <div class="logo-container">
+                        <img src="img/logoname.png" alt="Logo" class="inventory-logo">
+                    </div>
+                    <h2 class="inventory-title">APOCALYPSE SURVIVAL KIT</h2>
+                    <div class="urgency-message">Grab everything you need to survive!</div>
+
+                    <div class="game-content">
+                        <!-- Inventory Grid -->
+                        <div class="inventory-grid">
+                        <div class="inventory-slot" data-item="111">
+                            <img src="img/111.png" alt="Anti-radiation medicine">
+                            <div class="tooltip">
+                                <h3>Anti-radiation Medicine</h3>
+                                <p>-50% radiation exposure<br>+10% health boost<br>Cost: 30 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="222">
+                            <img src="img/222.png" alt="Gas mask">
+                            <div class="tooltip">
+                                <h3>Gas Mask</h3>
+                                <p>-100% radiation protection<br>Cost: 50 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="333">
+                            <img src="img/333.png" alt="Machete">
+                            <div class="tooltip">
+                                <h3>Machete</h3>
+                                <p>+30% strength<br>+30% survival chance<br>Cost: 40 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="444">
+                            <img src="img/444.png" alt="Rope">
+                            <div class="tooltip">
+                                <h3>Survival Rope</h3>
+                                <p>Help in unexpected situations<br>Cost: 20 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="555">
+                            <img src="img/555.png" alt="Axe">
+                            <div class="tooltip">
+                                <h3>Universal Axe</h3>
+                                <p>Perfect for wood and defense<br>Cost: 35 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="666">
+                            <img src="img/666.png" alt="Radioactive canned food">
+                            <div class="tooltip">
+                                <h3>Radioactive Canned Food</h3>
+                                <p>-25% health<br>+25% survival chance<br>Cost: 15 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="777">
+                            <img src="img/777.png" alt="Large medical kit">
+                            <div class="tooltip">
+                                <h3>Large Medical Kit</h3>
+                                <p>+100% health restoration<br>Cost: 45 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="113">
+                            <img src="img/113.png" alt="Vape">
+                            <div class="tooltip">
+                                <h3>Vape "Cloud Maker 3000"</h3>
+                                <p>+50% Style Points<br>-20% Lung Capacity<br>+100% Chance to attract zombies with sweet smell<br>Cost: 25 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="112">
+                            <img src="img/112.png" alt="Power Bank">
+                            <div class="tooltip">
+                                <h3>Power Bank "Never Die"</h3>
+                                <p>+30% Electronics Skills<br>+15% Survival (can charge radio)<br>-10% Stealth (LED lights everywhere)<br>Cost: 35 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="888">
+                            <img src="img/888.png" alt="Smartphone">
+                            <div class="tooltip">
+                                <h3>Smartphone "iWaste Pro Max"</h3>
+                                <p>+40% Navigation Skills<br>-30% Social Skills (addiction)<br>+20% Chance to die while taking selfies<br>Cost: 60 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="999">
+                            <img src="img/999.png" alt="Bong">
+                            <div class="tooltip">
+                                <h3>Bong "Peace & Radiation"</h3>
+                                <p>+70% Chill Level<br>-40% Reaction Time<br>+90% Chance to befriend mutants<br>Cost: 30 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="114">
+                            <img src="img/114.png" alt="Condom">
+                            <div class="tooltip">
+                                <h3>Condom "Vault-Tec Safe"</h3>
+                                <p>+100% Protection from... things<br>+50% Confidence<br>-20% Speed (extra careful walking)<br>Cost: 10 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="1001">
+                            <img src="img/photo2/1.png" alt="Flower Pot">
+                            <div class="tooltip">
+                                <h3>Flower Pot "Hope Blooms"</h3>
+                                <p>+80% Morale boost<br>+15% chance to find food (attracts bees)<br>-25% Stealth (bright colors)<br>Cost: 25 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="1002">
+                            <img src="img/photo2/2.png" alt="Adult Movie Actress Photo">
+                            <div class="tooltip">
+                                <h3>Actress Photo "Motivation+"</h3>
+                                <p>+200% Survival motivation<br>+50% Running speed<br>-30% Focus in critical situations<br>Cost: 5 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="1003">
+                            <img src="img/photo2/3.png" alt="Sedated Labubu">
+                            <div class="tooltip">
+                                <h3>Labubu "Anti-Stress"</h3>
+                                <p>+90% Calmness<br>+60% Panic resistance<br>-40% Danger reaction time<br>Cost: 35 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="1004">
+                            <img src="img/photo2/4.png" alt="Fake Beats Headphones">
+                            <div class="tooltip">
+                                <h3>Headphones "Beats by Radiation"</h3>
+                                <p>+70% Mutant screams blocked<br>+30% Motivation (bass boost)<br>-50% Environmental hearing<br>Cost: 40 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="1005">
+                            <img src="img/photo2/5.png" alt="Cigarette Pack">
+                            <div class="tooltip">
+                                <h3>Cigarettes "Last Puff"</h3>
+                                <p>+100% Coolness factor<br>+50% Stress resistance<br>-30% Lung health<br>-20% Stamina<br>Cost: 20 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="1006">
+                            <img src="img/photo2/6.png" alt="Vanilla Latte Mug">
+                            <div class="tooltip">
+                                <h3>Mug "Vanilla Latte Doomsday"</h3>
+                                <p>+85% Comfort level<br>+40% Energy (caffeine)<br>+25% Chance to find milk in ruins<br>-15% Speed (careful sipping)<br>Cost: 30 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="1007">
+                            <img src="img/photo2/7.png" alt="Hoodie">
+                            <div class="tooltip">
+                                <h3>Hoodie "Survivor's Hood"</h3>
+                                <p>+60% Stealth<br>+40% Cold protection<br>+30% Radiation protection (thick fabric)<br>Cost: 45 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="1008">
+                            <img src="img/photo2/8.png" alt="Rammstein Album">
+                            <div class="tooltip">
+                                <h3>Rammstein Album "Du Hast Survived"</h3>
+                                <p>+150% Combat aggression<br>+80% Pain resistance<br>+200% Urge to burn everything<br>-30% Diplomacy skills<br>Cost: 55 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="1009">
+                            <img src="img/photo2/9.png" alt="Simple Dimple">
+                            <div class="tooltip">
+                                <h3>Simple Dimple "Apocalypse Anti-Stress"</h3>
+                                <p>+95% Concentration<br>+60% Panic resistance<br>+40% Shooting accuracy (relaxed hands)<br>-10% Reaction speed (gets distracted)<br>Cost: 15 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="1010">
+                            <img src="img/photo2/10.png" alt="Solana Coin">
+                            <div class="tooltip">
+                                <h3>Solana Coin "Crypto-Talisman"</h3>
+                                <p>+300% Trading luck<br>+100% Chance to find tech<br>-50% Trust from elderly survivors<br>+500% Urge to "buy the dip"<br>Cost: 100 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="1011">
+                            <img src="img/photo2/11.png" alt="Elon Musk Figurine">
+                            <div class="tooltip">
+                                <h3>Elon Musk Figurine "Mars Dream"</h3>
+                                <p>+250% Innovation skills<br>+180% Chance to build rockets from scrap<br>+90% Twitter addiction<br>-60% Earth attachment<br>+400% Urge to rename everything "X"<br>Cost: 420 caps</p>
+                            </div>
+                        </div>
+
+                        <div class="inventory-slot" data-item="1012">
+                            <img src="img/photo2/12.png" alt="Supreme T-shirt">
+                            <div class="tooltip">
+                                <h3>Supreme T-shirt "Hype Beast Survivor"</h3>
+                                <p>+500% Street credibility<br>+200% Trade value with Gen-Z survivors<br>+150% Confidence in wasteland fashion<br>-80% Stealth (too flashy)<br>-90% Logic (paid 300 caps for cotton)<br>Cost: 300 caps</p>
+                            </div>
+                        </div>
+                                            </div>
+
+                        <!-- Right Side - Backpack and Actions -->
+                        <div class="action-section">
+                            <div class="backpack-container">
+                                <img src="img/backpack.png" alt="Survival Backpack" class="backpack">
+                            </div>
+
+                            <!-- Countdown Timer -->
+                            <div class="countdown-timer">
+                                <div class="timer-label">TIME TO IMPACT:</div>
+                                <div class="timer-display" id="countdownTimer">15:00</div>
+                            </div>
+
+                            <button id="readyButton" class="ready-button">GO TO BUNKER</button>
+                            <div id="survivalDays" class="survival-days"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats and Leaderboard Section -->
+            <div class="side-panel">
+                <div class="caps-counter">Bottle Caps: <span id="capsCount">1000</span></div>
+
+                <div class="stats-row">
+                    <div class="mini-stat">
+                        <span class="mini-number" id="survivorCount">1,247</span>
+                        <span class="mini-label">SURVIVORS</span>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="mini-number" id="timeLeft">14:32</span>
+                        <span class="mini-label">TIME LEFT</span>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="mini-number">97.3%</span>
+                        <span class="mini-label">SURVIVAL RATE</span>
+                    </div>
+                </div>
+
+                <div class="mini-leaderboard">
+                    <div class="mini-leaderboard-title">TOP-5 SURVIVORS</div>
+                    <div class="mini-leaderboard-content">
+                        <div class="mini-row">
+                            <span class="mini-rank">1</span>
+                            <span class="mini-address">7Jwo19NhLhHatVSpz...</span>
+                            <span class="mini-time">02:15</span>
+                            <span class="mini-items">12/12</span>
+                        </div>
+                        <div class="mini-row">
+                            <span class="mini-rank">2</span>
+                            <span class="mini-address">9Kx4mBvRtYsP2Qw7...</span>
+                            <span class="mini-time">03:42</span>
+                            <span class="mini-items">11/12</span>
+                        </div>
+                        <div class="mini-row">
+                            <span class="mini-rank">3</span>
+                            <span class="mini-address">5Nt8pLqWxZsH6Rf3...</span>
+                            <span class="mini-time">04:18</span>
+                            <span class="mini-items">10/12</span>
+                        </div>
+                        <div class="mini-row">
+                            <span class="mini-rank">4</span>
+                            <span class="mini-address">2Yv7cDgMnKpR9Sx4...</span>
+                            <span class="mini-time">05:33</span>
+                            <span class="mini-items">9/12</span>
+                        </div>
+                        <div class="mini-row">
+                            <span class="mini-rank">5</span>
+                            <span class="mini-address">8Qz6fHjNrMsL4Tw2...</span>
+                            <span class="mini-time">06:47</span>
+                            <span class="mini-items">8/12</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="backgroundMusic" loop>
+        <source src="audio/background.mp3" type="audio/mpeg">
+        <source src="audio/background.ogg" type="audio/ogg">
+        <source src="audio/background.wav" type="audio/wav">
+    </audio>
+
+    <audio id="startSound">
+        <source src="audio/start.mp3" type="audio/mpeg">
+        <source src="audio/start.ogg" type="audio/ogg">
+        <source src="audio/start.wav" type="audio/wav">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
